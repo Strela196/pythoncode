@@ -1,35 +1,31 @@
-import sys
 import random
 a = None  # a is start number
 b = None  # b is end number
 # a and b are so that if the try code doesnt work we dont need to check if it works or if the start and end numbers are there
+print('''
+Hello!
+This is a game in which you try to guess a number which a computer randumly choses 
+First you will need to enter to numbers and than the computer will chose a number between thos two numbers ''')
 while True:
     try:
-        try:  # checks if you have enterd any numbers
-            # int is so that the number given gets converted from str to int
-            a = int(sys.argv[1])
-            b = int(sys.argv[2])
-            print(a, b)
-        except IndexError:  # if you didnt it tells you to
-            a = int(input('please re-enter a real start number:'))
-            b = int(input('please re-enter a real end number: '))
-        except ValueError:
-            a = int(
-                input('i didnt think you didnt know what a number pleasseee enter a  start number:'))
-            b = int(input('so enter an end number: '))
-    except IndexError:
-        a = int(input('damn you suck enter a start number: '))
-        b = int(input('and another number enter a start number: '))
-    except ValueError:
-        a = int(input(
-            'really huh really whyyyy are you doing this pleasseeeeee entere a start number:'))
-        b = int(input('and ofc enter an end number: '))
-    finally:
+        a = int(input('Here you\'ll enter the first number:  '))
+        b = int(input('and here you will enter the second number:  '))
         break
+    except ValueError or IndexError:
+        print('you need to enter a number')
+        continue
 
+while a > b:
+    try:
+        a = int(input('the first number that you have entered was higher than the second please enter a number lower than the second one:  '))
+        break
+    except ValueError or IndexError:
+        print('you need to enter a number')
+        continue
+print('great now the program will chose a random number')
 
 startnum = random.randint(a, b)
-print(startnum)
+print('great now we are all set')
 c = None  # its set to none so that we can later change it
 
 c = int(input('please enter a number that you think is right:  '))
